@@ -1,23 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useQuery, gql } from '@apollo/client';
 
-function App() {
+// Define the GraphQL query
+const HELLO_QUERY = gql`
+  query GetHello {
+    hello
+  }
+`;
+
+const App: React.FC = () => {
+  // Use Apollo's useQuery hook to make a query request
+  const { loading, error, data } = useQuery(HELLO_QUERY);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>GraphQL Apollo Client Example</h1>
+        <p>{data.hello}</p> {/* Display the hello response from GraphQL API */}
       </header>
     </div>
   );
