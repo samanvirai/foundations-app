@@ -1,8 +1,9 @@
 import React from "react";
 import ReceivingHistory from "./components/ReceivingHistory";
+import TransactionChart from "./components/TransactionsChart";
 
 const App: React.FC = () => {
-  
+
   const transactionHistory = [
     {
       id: 1,
@@ -94,55 +95,11 @@ const App: React.FC = () => {
       recipient: "Leo",
       totalValue: 1080.0,
     },
-    {
-      id: 11,
-      date: "2022-12-05",
-      stockSymbol: "BABA",
-      shares: 7,
-      pricePerShare: 210.0,
-      recipient: "Wei",
-      totalValue: 1470.0,
-    },
-    {
-      id: 12,
-      date: "2022-11-18",
-      stockSymbol: "INTC",
-      shares: 20,
-      pricePerShare: 50.0,
-      recipient: "Anika",
-      totalValue: 1000.0,
-    },
-    {
-      id: 13,
-      date: "2022-10-30",
-      stockSymbol: "DIS",
-      shares: 6,
-      pricePerShare: 180.0,
-      recipient: "Carlos",
-      totalValue: 1080.0,
-    },
-    {
-      id: 14,
-      date: "2022-09-25",
-      stockSymbol: "NVDA",
-      shares: 4,
-      pricePerShare: 500.0,
-      recipient: "Emma",
-      totalValue: 2000.0,
-    },
-    {
-      id: 15,
-      date: "2022-08-20",
-      stockSymbol: "AMD",
-      shares: 10,
-      pricePerShare: 105.0,
-      recipient: "Tom",
-      totalValue: 1050.0,
-    },
   ];
 
   return (
-    <div className="App">
+    <div>
+      <TransactionChart transactions={transactionHistory} />
       <ReceivingHistory transactions={transactionHistory} />
     </div>
   );
